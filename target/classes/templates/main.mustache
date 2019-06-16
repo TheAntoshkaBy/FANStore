@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<br>
+<div class="container float-center">
+    <!-- Панель навигации -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top">
+        <a href="/mainPage" class="navbar-brand">FANStore</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">На Главную</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/personalPage" class="nav-link">Личный кабинет</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input type="search" class="form-control mr-sm-2" placeholder="" aria-label="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
+            </form>
+        </div>
+    </nav>
+    <br>
+    <div class="container row float-right">
+        <div class="col-md-4"><h1  inline="text">Hello, {{currentUser}}</h1></div>
+        <div class="col-md-8">
+            <form  action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                <input type="submit" value="Log Out" class="btn btn-dark align-middle"/>
+            </form>
+        </div>
+    </div>
+    <br>
+    <form method="get" action="">
+        <input class="btn btn-warning" type="submit" value="Активация/Дизактивация" name = "event"/>
+        <input class="btn btn-danger" type="submit" value="Удаление" name = "event"/>
+        <input class="btn btn-info" type="submit" value="Назначить Одменом/Снять Одменку" name = "event"/>
+    <br><br>
+    <div class="jumbotron">
+        <div class="d-flex justify-content-around"><h1>Users</h1></div>
+    <table class="table table-bordered table-hover table-sm">
+
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"><div class="d-flex justify-content-around">#</div></th>
+            <th scope="col"><div class="d-flex justify-content-around">Id</div></th>
+            <th scope="col"><div class="d-flex justify-content-around">Name</div></th>
+            <th scope="col"><div class="d-flex justify-content-around">Email</div></th>
+            <th scope="col"><div class="d-flex justify-content-around">Is Active</div></th>
+        </tr>
+        </thead>
+        <tbody>
+        <style>
+            .big-checkbox  {width: 10px; height: 10px;}
+
+
+        </style>
+    {{#users}}
+        <tr>
+            <th scope="row"><div class="d-flex justify-content-around"><input class="big-checkbox" type="checkbox" name="id" value="{{id}}" /></div></th>
+            <td><div class="d-flex justify-content-around"><h4><span class="badge badge-outline-primary">{{id}}</span></h4></div></td>
+            <td><div class="d-flex justify-content-around"><h4><span class="badge badge-outline-primary">{{username}}</span></h4></div></td>
+            <td><div class="d-flex justify-content-around"><h4><span class="badge badge-outline-primary">{{email}}</span></h4></div></td>
+            <td><div class="d-flex justify-content-around"><h4><span class="badge badge-outline-primary">{{block}}</span></h4></div></td>
+        </tr>
+    {{/users}}
+        </tbody>
+    </table>
+
+
+
+</div>
+</form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

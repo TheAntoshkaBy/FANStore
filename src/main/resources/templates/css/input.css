@@ -1,0 +1,9 @@
+.container-my {
+    width: 1260px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: blue;
+}
