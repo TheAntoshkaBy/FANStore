@@ -11,6 +11,7 @@
     <title>Hello, world!</title>
 
 </head>
+
 <body>
 <div class="container">
     <br>
@@ -23,7 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="/personalPage" class="nav-link">Личный кабинет</a>
+                    <!--<a href="/personalPage" class="nav-link">Личный кабинет</a>-->
+                    <form method="get" action="">
+                    <input class="btn btn-warning" type="submit" value="Личный кабинет" name = "event"/>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -34,26 +38,16 @@
     <form method="get" action="">
         <div class="card w-100">
             <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">{{annotation}}</p>
-                <input class="btn btn-warning" type="submit" value="Подробнее" name = "event"/>
-                <input class="btn btn-warning" type="submit" value="Добавить главу" name = "event"/>
-            </div>
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{body}}</p>
+                <input class="btn btn-warning" type="submit" value="Назад" name = "event"/>
+                <input class="btn btn-warning" type="submit" value="Редактировать" name = "event"/>
+                <input class="btn btn-warning" type="submit" value="{{next}}" name = "event"/>
+                </div>
         </div>
         <br>
-        <div class="col-md-4"><h1  inline="text">Главы:</h1></div>
-    </form>
-</div>
-<br>
-{{#chapters}}
-<form method="get" action="">
-<div class="container">
-    <a href="/chapter/{{id}}" class="btn btn-primary btn-lg btn-block text-left">{{number}}. {{name}}</a>
-</div>
 </form>
-{{/chapters}}
-<br>
-<br>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

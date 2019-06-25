@@ -1,7 +1,9 @@
 package com.controllers;
 
+import com.models.Post;
 import com.models.Role;
 import com.models.User;
+import com.repositories.PostRepository;
 import com.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,8 @@ public class MainPageController {
     private Authentication currentUser;
     @Autowired
     private UserRepository uRep;
+    @Autowired
+    private PostRepository pRep;
 
     private String commandForButtonLoginHref;
     private String commandForNameOfButtonLogin;
@@ -56,7 +60,15 @@ public class MainPageController {
             model.put("registrationButtonName",registrationButtonName);
             model.put("registrationHref",registrationHref);
             model.put("name",name);
-
+        Post post = pRep.findById(107);
+            model.put("title",post.getTitle());
+            model.put("body",post.getAnnotation());
+            post = pRep.findById(109);
+            model.put("title2",post.getTitle());
+            model.put("body2",post.getAnnotation());
+            post = pRep.findById(110);
+            model.put("title1",post.getTitle());
+            model.put("body1",post.getAnnotation());
         return "mainPage";
     }
 

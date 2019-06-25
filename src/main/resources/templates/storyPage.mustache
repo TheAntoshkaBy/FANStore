@@ -11,7 +11,6 @@
     <title>Hello, world!</title>
 
 </head>
-
 <body>
 <div class="container">
     <br>
@@ -21,6 +20,14 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/personalPage" class="nav-link">Личный кабинет</a>
+                </li>
+            </ul>
+        </div>
+
     </nav>
     <br>
     <br>
@@ -30,10 +37,21 @@
                 <h5 class="card-title">{{title}}</h5>
                 <p class="card-text">{{annotation}}</p>
                 <input class="btn btn-warning" type="submit" value="Подробнее" name = "event"/>
+                <input class="btn btn-warning" type="submit" value="Добавить главу" name = "event"/>
             </div>
         </div>
+        <br>
+        <div class="col-md-4"><h1  inline="text">Главы:</h1></div>
     </form>
 </div>
+<br>
+{{#chapters}}
+<form method="get" action="">
+<div class="container">
+    <a href="/chapter/{{id}}" class="btn btn-primary btn-lg btn-block text-left">{{number}}. {{name}}</a>
+</div>
+</form>
+{{/chapters}}
 <br>
 <br>
 

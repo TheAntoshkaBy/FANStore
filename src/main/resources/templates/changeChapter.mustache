@@ -9,8 +9,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/input.css">
     <title>Hello, world!</title>
+    <script src="https://cdn.tiny.cloud/1/29lbe1omyf9tggipkzul0bawgjtmgre3ovqme07aafvi0v82/tinymce/5/tinymce.min.js"></script>
+    <script src='https://cdn.tiny.cloud/1/29lbe1omyf9tggipkzul0bawgjtmgre3ovqme07aafvi0v82/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+
+        });
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#mytxt',
+            height: 500,
+            toolbar_drawer: 'floating'
+        });
+    </script>
 
 </head>
+
 <body>
 <div class="container">
     <br>
@@ -20,41 +36,30 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a href="/personalPage" class="nav-link">Личный кабинет</a>
-                </li>
-            </ul>
-        </div>
-
     </nav>
-    <br>
-    <br>
-    <form method="get" action="">
-        <div class="card w-100">
-            <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">{{annotation}}</p>
-                <input class="btn btn-warning" type="submit" value="Подробнее" name = "event"/>
-                <input class="btn btn-warning" type="submit" value="Добавить главу" name = "event"/>
-            </div>
+</div>
+<br>
+<div class="container">
+    <div>
+        <h1  inline="text text-">Hello, {{currentUser}}</h1>
+    </div>
+</div>
+<br>
+<div class="container" >
+
+    <form method="post" action="/inputStory" style="height: 800px">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <div class="container" >
+            <input class="form-control" type="text" aria-describedby="emailHelp" id="exampleInputEmail1" name="name" placeholder="Введите заголовок..">
+        </div>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <div class="container" >
+            <input id="mytxt" name="body" placeholder="Введите аннотацию..">
         </div>
         <br>
-        <div class="col-md-4"><h1  inline="text">Главы:</h1></div>
+        <input type="submit" class="btn btn-primary" value="Create Story">
     </form>
 </div>
-<br>
-{{#chapters}}
-<form method="get" action="">
-<div class="container">
-    <a href="/chapter/{{id}}" class="btn btn-primary btn-lg btn-block text-left">{{number}}. {{name}}</a>
-</div>
-</form>
-{{/chapters}}
-<br>
-<br>
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
